@@ -1,9 +1,9 @@
 <!-- src/components/HeroSection/HeroSection.vue -->
 <template>
-  <Nvar />
+  <nav />
   <div class="flex h-screen">
     <div class="w-1/3">
-        <img src="/src/assets/Images/Fabio3.png" alt="fabio3" class="w-auto h-screen">
+        <img src="/src/assets/Images/Fabio3.png" alt="fabio3" class="w-auto h-screen" loading="lazy">
     </div>
     <div class="w-1/3 flex flex-col justify-end bg-squares-bg"> <!-- Clase personalizada -->
       <div class="py-4 bg-violet-400 bg-blend-darken opacity-30">
@@ -19,17 +19,21 @@
     </div>
     <div class="w-1/3">
       <a>
-        <img src="/src/assets/Images/Carla4.png" alt="Carla4" class="w-auto h-screen">
+        <img src="/src/assets/Images/Carla4.png" alt="Carla4" class="w-auto h-screen" loading="lazy">
       </a>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Button from '../Button.vue';
+import { useHeroSection } from './useHeroSection';
+import { defineProps } from 'vue';
 
-// Define las propiedades que espera este componente
-const props = defineProps<{ msg: string }>()
+const props = defineProps<{
+  msg?: string;
+}>();
+
+const { count, doSomething, enhancedMessage, Button } = useHeroSection(props);
 </script>
 
 <style scoped>
